@@ -1,4 +1,4 @@
-# Task Scheduling on Microservice Architecture
+# Cron Scheduler
 In distributed systems, such as a suite of microservices, it is challenging to for each service to manage their own jobs and setup cron services.
 
 Google AppEngine provides a Cron service. Using this service for scheduling and
