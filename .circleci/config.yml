@@ -1,0 +1,36 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/workspace
+    docker:
+      - image: 'gcr.io/andela-docker/ci-builder-base:0.0.1-node8_grpc1-6-6'
+        environment:
+          GCLOUD_PROJECT: microservices-kube
+          NODE_ENV: test
+          PROJECT_NAME: microservices-kube
+          CLUSTER_NAME: staging
+          CLOUDSDK_COMPUTE_ZONE: us-east1-c
+          CONTAINER_NAME: authorization
+          DEPLOYMENT: authorization
+          IMAGE: authorization
+          PROJECT_NAME_PROD: andela-kube
+          CLUSTER_NAME_PROD: andela-prod
+          CLOUDSDK_COMPUTE_ZONE_PROD: us-east1-b
+          CONTAINER_NAME_PROD: authorization
+          DEPLOYMENT_PROD: authorization
+          DEPLOYMENT_KIT_REPO: 'git@github.com:andela/DevOps-Misc-Scripts.git'
+          DEPLOYMENT_KIT_NAME: deployment-kit
+      - image: 'postgres:9.6-alpine'
+        environment:
+          POSTGRES_USER: ci_user
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: authorization
+    steps:
+      - checkout
+      - deploy:
+          name: Deploy Service
+          command: >
+            if [ "${CIRCLE_BRANCH}" == "master" ] || [ "${CIRCLE_BRANCH}" ==
+            "develop" ]; then
+              ./deploy.sh
+            fi
