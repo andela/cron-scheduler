@@ -18,4 +18,4 @@ sudo /opt/google-cloud-sdk/bin/gcloud --quiet config set container/cluster $CLUS
 sudo /opt/google-cloud-sdk/bin/gcloud --quiet config set compute/zone ${CLOUDSDK_COMPUTE_ZONE}
 sudo /opt/google-cloud-sdk/bin/gcloud --quiet container clusters get-credentials $CLUSTER_NAME
 
-gcloud app --quiet deploy cron.yaml app.yaml
+gcloud app --quiet deploy --version=1 cron.yaml app.yaml
