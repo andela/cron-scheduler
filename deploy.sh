@@ -18,4 +18,8 @@ sudo /opt/google-cloud-sdk/bin/gcloud --quiet config set container/cluster $CLUS
 sudo /opt/google-cloud-sdk/bin/gcloud --quiet config set compute/zone ${CLOUDSDK_COMPUTE_ZONE}
 sudo /opt/google-cloud-sdk/bin/gcloud --quiet container clusters get-credentials $CLUSTER_NAME
 
+sudo apt-get install -y python-pip
+
+mkdir lib
+pip install -t lib -r requirements.txt
 gcloud app --quiet deploy --version=1 cron.yaml app.yaml
