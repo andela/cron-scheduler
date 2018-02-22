@@ -21,10 +21,8 @@ This scheduler contains two components:
 You specify the cron messages to send in the `cron.yaml` file of the App Engine
 application. This file is written in
 [YAML format](http://cloud.google.com/appengine/docs/python/config/cron#Python_app_yaml_About_cron_yaml).
-The App Engine application uses the first param of the event-handler
-URL as the name of the corresponding Cloud Pub/Sub topic while the second param is the event type. For example, if an
-event handler is specified as `url: /publish/daily-tick/USER_CREATED_EVENT`, the Cloud Pub/Sub topic name
-is `daily-tick` while the event type is `USER_CREATED_EVENT`.
+The App Engine application publishes all events to `cron` topic.It uses the event-type URL param as the event type. For example, if an event handler is specified as `url: /publish/USER_CREATED_EVENT`, the Cloud Pub/Sub topic name
+will remain `cron` while the event type is `USER_CREATED_EVENT`.
 
 When the Cron Service fires a scheduled event, the App Engine
 application handles the request and passes the cron message to the corresponding
@@ -52,7 +50,7 @@ shows the syntax.
 
     cron:
       - description: <description of the job>
-               url: /events/<topic name to publish to>
+               url: /events/<event type to publish>
                schedule: <frequency in human-readable format>
 
 For a complete description of how to use YAML to specify jobs for Cron Service,
