@@ -18,12 +18,12 @@ import json
 import pubsub_utils
 
 class PushToPubSub(webapp2.RequestHandler):
-    def get(self, topic, event_type):
-        pubsub_utils.publish_to_topic(topic, event_type, str(time.time()))
+    def get(self, event_type):
+        pubsub_utils.publish_to_topic(event_type, str(time.time()))
 
         self.response.headers['Content-Type'] = 'application/json'
         self.response.write(json.dumps({"status": "200"}))
 
 app = webapp2.WSGIApplication([
-    webapp2.Route(r'/publish/<topic>/<event_type>', handler=PushToPubSub)
+    webapp2.Route(r'/publish/<event_type>', handler=PushToPubSub)
 ], debug=True)

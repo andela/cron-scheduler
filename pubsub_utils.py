@@ -48,10 +48,10 @@ def get_project_id():
     return app_identity.get_application_id()
 
 
-def publish_to_topic(topic, event_type, msg='', create=True):
+def publish_to_topic(event_type, msg='', create=True):
     urlfetch.set_default_fetch_deadline(180)
     pubsub = get_client()
-    full_name = get_full_topic_name(topic)
+    full_name = get_full_topic_name('cron')
     message = {
         "messages": [
             {
