@@ -10,3 +10,7 @@ cron:
 - description: Push a "tick" onto pubsub every week
   url: /publish/COHORT_CREATED_EVENT
   schedule: every saturday 00:00
+
+- description: Push a "tick" to pubsub every Monday
+  url: /publish/QUALITY_REPORT_CREATED_EVENT
+  schedule: every monday 12:00
