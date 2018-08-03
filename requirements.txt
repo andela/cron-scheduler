@@ -1,1 +1,2 @@
 google-api-python-client
+googleapis-common-protos==1.3.5
