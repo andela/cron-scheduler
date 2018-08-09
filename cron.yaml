@@ -17,4 +17,4 @@ cron:
 
 - description: Publish a DB update event every day at 4am
   url: /publish/UpdateInformationDB
-  schedule: schedule: every day 04:00
+  schedule: every day 04:00
