@@ -14,3 +14,7 @@ cron:
 - description: Publish quality report event every week
   url: /publish/QualityReportEventCreated
   schedule: every monday 12:00
+
+- description: Publish a DB update event every day at 4am
+  url: /publish/UpdateInformationDB
+  schedule: schedule: every day 04:00
