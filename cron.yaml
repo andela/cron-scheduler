@@ -13,4 +13,4 @@ cron:
 
 - description: Publish quality report event every week
   url: /publish/QualityReportEventCreated
-  schedule: every Monday 12:00
+  schedule: every monday 12:00
