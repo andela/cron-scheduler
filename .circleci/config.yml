@@ -6,6 +6,8 @@ jobs:
       - image: 'gcr.io/andela-docker/ci-builder-base:0.0.1-node8_grpc1-6-6'
         environment:
           GCLOUD_PROJECT: microservices-kube
+          DEPLOYMENT_ENVIRONMENT_PROD: "production"
+          DEPLOYMENT_ENVIRONMENT: "staging"
           NODE_ENV: test
           PROJECT_NAME: microservices-kube
           CLUSTER_NAME: staging

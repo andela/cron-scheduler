@@ -1,6 +1,6 @@
 
 if [ "$CIRCLE_BRANCH" == 'master' ] || [ "$CIRCLE_BRANCH" == 'v2-master' ] || ! [ -z "$CIRCLE_TAG" ]; then
-  DEPLOYMENT_ENVIRONMENT="production"
+  DEPLOYMENT_ENVIRONMENT=$DEPLOYMENT_ENVIRONMENT_PROD
   GCLOUD_SERVICE_KEY=$GCLOUD_SERVICE_KEY_PROD
   PROJECT_NAME=$PROJECT_NAME_PROD
   CLUSTER_NAME=$CLUSTER_NAME_PROD
@@ -23,3 +23,4 @@ sudo apt-get install -y python-pip
 mkdir lib
 pip install -t lib -r requirements.txt
 gcloud app --quiet deploy --version=1 cron.yaml app.yaml
+
