@@ -57,14 +57,19 @@ def publish_to_topic(event_type, msg='', create=True):
             {
                 "data": base64.b64encode(msg),
                 "attributes": {
+                    "type": "cron",
                     "eventType": event_type
                 }
             }
         ]
     }
     try:
-        pubsub.projects().topics().publish(topic=full_name,
+        resp = pubsub.projects().topics().publish(topic=full_name,
                                            body=message).execute()
+
+        print ('Published a message "{}" to a topic {}. The message_id was {}.'
+           .format(message, full_name, resp.get('messageIds')[0]))
+           
     except HttpError as e:
         if create and e.resp.status == 404 and "Resource not found" in e.content:
             pubsub.projects().topics().create(name=full_name,
