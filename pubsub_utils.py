@@ -22,7 +22,6 @@ import base64
 from time import strftime
 import httplib2
 import oauth2client.contrib.appengine as gae_oauth2client
-import datetime
 from apiclient import discovery
 from google.appengine.api import memcache
 from google.appengine.api import app_identity
@@ -54,14 +53,15 @@ def publish_to_topic(event_type, msg='', create=True):
     pubsub = get_client()
     full_name = get_full_topic_name('cron')
     message = {
+        "messages": [
+            {
                 "data": base64.b64encode(msg),
                 "attributes": {
-                    "timestamp": datetime.datetime.now().timestamp(),
-                    "eventType": event_type,
-                    "userId": 0,
-                    "correlationId": 0
+                    "eventType": event_type
                 }
             }
+        ]
+    }
     try:
         pubsub.projects().topics().publish(topic=full_name,
                                            body=message).execute()
