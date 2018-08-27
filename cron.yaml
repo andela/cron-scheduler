@@ -15,6 +15,10 @@ cron:
   url: /publish/QualityReportEventCreated
   schedule: every monday 12:00
 
+- description: Publish quality metrics to data dog every day
+  url: /publish/QualityReportDataDogEventCreated
+  schedule: every 1 minutes
+
 - description: Publish a DB update event every day at 4am
   url: /publish/UpdateInformationDB
   schedule: every day 03:00
