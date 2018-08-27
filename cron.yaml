@@ -17,7 +17,7 @@ cron:
 
 - description: Publish quality metrics to data dog every day
   url: /publish/QualityReportDataDogEventCreated
-  schedule: every 1 minutes
+  schedule: every 24 hours
 
 - description: Publish a DB update event every day at 4am
   url: /publish/UpdateInformationDB
