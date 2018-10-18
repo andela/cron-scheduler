@@ -23,6 +23,6 @@ cron:
   url: /publish/UpdateInformationDB
   schedule: every day 03:00
 
-- description: Publish a DB update event everyday at 2am
-  url: /publish/UpdateResourcePlanningDB
+- description: Publish an event to trigger next available date update
+  url: /publish/NextAvailableDateUpdatedEvent
   schedule: every day 01:00
