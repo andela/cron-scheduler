@@ -1,28 +1,32 @@
 cron:
-- description: Push a "tick" onto pubsub every hour
-  url: /publish/USER_LOGGED_IN
-  schedule: every 1 hours
+  - description: Push a "tick" onto pubsub every hour
+    url: /publish/USER_LOGGED_IN
+    schedule: every 1 hours
 
-- description: Push a "tick" onto pubsub every day
-  url: /publish/USER_CREATED_EVENT
-  schedule: every 24 hours
+  - description: Push a "tick" onto pubsub every day
+    url: /publish/USER_CREATED_EVENT
+    schedule: every 24 hours
 
-- description: Push a "tick" onto pubsub every week
-  url: /publish/COHORT_CREATED_EVENT
-  schedule: every saturday 00:00
+  - description: Push a "tick" onto pubsub every week
+    url: /publish/COHORT_CREATED_EVENT
+    schedule: every saturday 00:00
 
-- description: Publish quality report event every week
-  url: /publish/QualityReportEventCreated
-  schedule: every monday 12:00
+  - description: Publish quality report event every week
+    url: /publish/QualityReportEventCreated
+    schedule: every monday 12:00
 
-- description: Publish quality metrics to data dog every day
-  url: /publish/QualityReportDataDogEventCreated
-  schedule: every 24 hours
+  - description: Publish quality metrics to data dog every day
+    url: /publish/QualityReportDataDogEventCreated
+    schedule: every 24 hours
 
-- description: Publish a DB update event every day at 4am
-  url: /publish/UpdateInformationDB
-  schedule: every day 03:00
+  - description: Publish a DB update event every day at 4am
+    url: /publish/UpdateInformationDB
+    schedule: every day 03:00
 
-- description: Publish an event to trigger next available date update
-  url: /publish/NextAvailableDateUpdatedEvent
-  schedule: every day 01:00
+  - description: Publish an event to trigger next available date update
+    url: /publish/NextAvailableDateUpdatedEvent
+    schedule: every day 01:00
+
+  - description: Publish an event to update developer status on salesforce
+    url: /publish/DeveloperPlacementStatusUpdatedEvent
+    schedule: every day 03:00
