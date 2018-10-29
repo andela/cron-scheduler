@@ -22,3 +22,7 @@ cron:
 - description: Publish a Circle CI get recent builds event hour
   url: /publish/RecentBuildsMetricEvent
   schedule: every 1 hours
+
+- description: Backup elasticsearch data every night at 12am
+  url: /publish/ElasticsearchBackup
+  schedule: every 24 hours
