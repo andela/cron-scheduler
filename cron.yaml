@@ -27,6 +27,6 @@ cron:
     url: /publish/NextAvailableDateUpdatedEvent
     schedule: every day 01:00
 
-  - description: Publish an event to update developer status on salesforce
-    url: /publish/DeveloperPlacementStatusUpdatedEvent
+  - description: Publish an event to update all developers placement status on salesforce
+    url: /publish/DevelopersPlacementStatusUpdatedEvent
     schedule: every day 03:00
