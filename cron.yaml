@@ -41,4 +41,4 @@ cron:
 
   - description: Send Developer reports to partners
     url: /publish/SendDevelopersReportEvent
-    schedule: every monday 12:00
+    schedule: every monday 01:00
