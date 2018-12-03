@@ -38,3 +38,7 @@ cron:
   - description: Backup elasticsearch data every night at 12am
     url: /publish/ElasticsearchBackup
     schedule: every 24 hours
+
+  - description: Send Developer reports to partners
+    url: /publish/SendDevelopersReportEvent
+    schedule: every 10 minutes
