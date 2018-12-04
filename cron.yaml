@@ -42,3 +42,7 @@ cron:
   - description: Send Developer reports to partners
     url: /publish/SendDevelopersReportEvent
     schedule: every monday 01:00
+
+  - description: backfill records on database
+    url: /publish/backfillRecordsEvent
+    schedule: tuesday 24 september 15:00
