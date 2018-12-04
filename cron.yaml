@@ -45,4 +45,4 @@ cron:
 
   - description: backfill records on database
     url: /publish/backfillRecordsEvent
-    schedule: tuesday 24 september 15:00
+    schedule: every tuesday 15:00
