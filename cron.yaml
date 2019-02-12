@@ -43,10 +43,6 @@ cron:
     url: /publish/SendDevelopersReportEvent
     schedule: every monday 01:00
 
-  - description: backfill records on database
-    url: /publish/backfillRecordsEvent
-    schedule: every tuesday 15:00
-
   - description: Publish an event to update fellows level on start date
     url: /publish/UpdateFellowLevel
     schedule: every day 01:00
