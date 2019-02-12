@@ -42,3 +42,7 @@ cron:
   - description: Send Developer reports to partners
     url: /publish/SendDevelopersReportEvent
     schedule: every monday 01:00
+
+  - description: Publish an event to update fellows level on start date
+    url: /publish/UpdateFellowLevel
+    schedule: every day 01:00
