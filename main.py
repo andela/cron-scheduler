@@ -12,18 +12,38 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import webapp2
-import time
 import json
-import pubsub_utils
+import sys
+sys.path.append("./lib")
 
-class PushToPubSub(webapp2.RequestHandler):
+import time
+
+import tornado.gen
+import tornado.ioloop
+import webapp2
+from nats.io.client import Client as NATS
+
+class NatsHandler(webapp2.RequestHandler):
     def get(self, event_type):
-        pubsub_utils.publish_to_topic(event_type, str(time.time()))
-
+        tornado.ioloop.IOLoop.current().run_sync(self.handler)
         self.response.headers['Content-Type'] = 'application/json'
         self.response.write(json.dumps({"status": "200"}))
 
+    @tornado.gen.coroutine
+    def handler(arg):
+        nc = NATS()
+        try:
+            opts = {"servers": ["nats://foo:bar@localhost:4222"]}
+            yield nc.connect(**opts)
+            yield nc.publish("Test", {})
+            yield nc.flush()
+            print("Published to '{0}', message: {1}".format("Test", {}))
+        except Exception, e:
+            print(e)
+
 app = webapp2.WSGIApplication([
-    webapp2.Route(r'/publish/<event_type>', handler=PushToPubSub)
+    webapp2.Route(r'/publish/<event_type>', handler=NatsHandler)
 ], debug=True)
+
+
+
