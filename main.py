@@ -33,11 +33,12 @@ class NatsHandler(webapp2.RequestHandler):
     def handler(arg):
         nc = NATS()
         try:
-            opts = {"servers": ["nats://foo:bar@localhost:4222"]}
+            # inject url dynamically
+            opts = {"servers": ["nats://sandbox-nats.my.andela.com:4222"]}
             yield nc.connect(**opts)
-            yield nc.publish("Test", {})
+            yield nc.publish("Test", "{}")
             yield nc.flush()
-            print("Published to '{0}', message: {1}".format("Test", {}))
+            print("Successfully published to '{0}', message: {1}".format("Test", {}))
         except Exception, e:
             print(e)
 
