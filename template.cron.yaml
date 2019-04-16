@@ -1,0 +1,5 @@
+cron:
+  - description: Push a "tick" onto NATS every 24 hours
+    url: /publish/USER_LOGGED_IN
+    targetEnvironment: sandbox, staging, qa, production
+    schedule: every 24 hours
