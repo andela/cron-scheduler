@@ -52,7 +52,8 @@ class NatsHandler(webapp2.RequestHandler):
             message = {
                 "eventType": event_type
             }
-            yield nc.publish("crons", str(message))
+            subject = "Crons.{0}".format(event_type)
+            yield nc.publish(subject, str(message))
             yield nc.flush()
             print("Nats server url: {0}".format(servers[0]))
             print("Successfully published to '{0}', message: {1}".format("crons", message))
