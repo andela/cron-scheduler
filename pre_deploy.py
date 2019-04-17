@@ -1,5 +1,8 @@
-#!/usr/bin/env python
+import json
+import sys
+sys.path.append("./lib")
 
+import time
 import os
 import yaml
 
@@ -8,6 +11,7 @@ def from_yaml(sourceFile):
         try:
             return yaml.load(stream)
         except yaml.YAMLError as exc:
+
             print(exc)
             return False
 
@@ -18,6 +22,7 @@ def to_yaml(destinationFile, data):
             return True
         except yaml.YAMLError as exc:
             print(exc)
+
             return False
 
 def generate_cron_file():
@@ -27,6 +32,6 @@ def generate_cron_file():
         task["description"] += " in " + environment + " environment"
         del task["targetEnvironment"]
 
-    to_yaml(os.getcwd() + "/cron.yaml", source)
 
 generate_cron_file()
+
