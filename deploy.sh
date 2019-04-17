@@ -6,7 +6,6 @@ sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file $
 sudo /opt/google-cloud-sdk/bin/gcloud --quiet config set project $CRON_PROJECT_NAME
 
 sudo apt-get install -y python-pip
-pip install -Iv pyyaml==3.13
 
 mkdir lib
 pip install -t lib -r requirements.txt
