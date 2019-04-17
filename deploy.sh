@@ -8,6 +8,7 @@ sudo /opt/google-cloud-sdk/bin/gcloud --quiet config set project $CRON_PROJECT_N
 sudo apt-get install -y python-pip
 
 mkdir lib
+pip install PyYAML
 pip install -t lib -r requirements.txt
 chmod +x pre_deploy.py
 # delete targetEnvironment values and generate cron.yaml file

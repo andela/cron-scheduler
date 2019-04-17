@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 
 import os
-import sys
-sys.path.append("./lib")
 
-import time
 import yaml
 
 def from_yaml(sourceFile):
