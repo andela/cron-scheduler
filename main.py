@@ -26,13 +26,13 @@ import webapp2
 from nats.io.client import Client as NATS
 
 class NatsHandler(webapp2.RequestHandler):
-    def get(self, event_type):
-        tornado.ioloop.IOLoop.current().run_sync(lambda: self.handler(event_type))
+    def get(self, event_type, environment):
+        tornado.ioloop.IOLoop.current().run_sync(lambda: self.handler(event_type, environment))
         self.response.headers['Content-Type'] = 'application/json'
         self.response.write(json.dumps({"status": "200"}))
 
     @tornado.gen.coroutine
-    def handler(arg, event_type):
+    def handler(arg, event_type, environment):
         nc = NATS()
         try:
             natServers = {
@@ -41,14 +41,13 @@ class NatsHandler(webapp2.RequestHandler):
                 "qa": "nats://qa-nats.my.andela.com:4222",
                 "production": "nats://nats.my.andela.com:4222"
             }
-
-            source = yaml_to_json(os.getcwd() + "/template.cron.yaml")
+            source = yaml_to_json(os.getcwd() + "/cron.yaml")
             servers = []
             for task in source["cron"]:
-                if event_type in task['url']:
-                    environments = task['targetEnvironment'].split(",")
-                    for environment in environments:
-                        servers.append(natServers[environment.strip()])
+                if event_type and environment in task["description"]:
+                    print "server is"
+                    print natServers[environment]
+                    servers.append(natServers[environment])
 
             opts = {"servers": servers}
             yield nc.connect(**opts)
@@ -57,6 +56,7 @@ class NatsHandler(webapp2.RequestHandler):
             }
             yield nc.publish("crons", str(message))
             yield nc.flush()
+            print("Nats server url: {0}".format(servers[0]))
             print("Successfully published to '{0}', message: {1}".format("crons", message))
         except Exception, e:
             print(e)
@@ -70,7 +70,7 @@ def yaml_to_json(sourceFile):
             return False
 
 app = webapp2.WSGIApplication([
-    webapp2.Route(r'/publish/<event_type>', handler=NatsHandler)
+    webapp2.Route(r'/publish/<event_type>/<environment>', handler=NatsHandler)
 ], debug=True)
 
 

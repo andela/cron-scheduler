@@ -27,6 +27,7 @@ def generate_cron_file():
     source = from_yaml(os.getcwd() + "/template.cron.yaml")
     for task in source["cron"]:
         environment = task["targetEnvironment"]
+        task["url"] += "/" + environment
         task["description"] += " in " + environment + " environment"
         del task["targetEnvironment"]
     
