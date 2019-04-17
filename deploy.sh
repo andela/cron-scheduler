@@ -10,6 +10,7 @@ sudo apt-get install -y python-pip
 mkdir lib
 pip install -t lib -r requirements.txt
 pip install PyYAML
+python -m pip install tornado
 chmod +x pre_deploy.py
 # delete targetEnvironment values and generate cron.yaml file
 ./pre_deploy.py
