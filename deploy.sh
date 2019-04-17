@@ -13,4 +13,4 @@ pip install -t lib -r requirements.txt
 chmod +x pre_deploy.py
 # delete targetEnvironment values and generate cron.yaml file
 ./pre_deploy.py
-gcloud app --quiet deploy --version=1 cron.yaml app.yaml
+gcloud app --quiet deploy --version=$CIRCLE_BUILD_NUM cron.yaml app.yaml
