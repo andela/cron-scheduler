@@ -1,9 +1,10 @@
-import json
+#!/usr/bin/env python
+
+import os
 import sys
 sys.path.append("./lib")
 
 import time
-import os
 import yaml
 
 def from_yaml(sourceFile):
@@ -31,7 +32,10 @@ def generate_cron_file():
         environment = task["targetEnvironment"]
         task["description"] += " in " + environment + " environment"
         del task["targetEnvironment"]
+    
+    to_yaml(os.getcwd() + "/cron.yaml", source)
 
 
-generate_cron_file()
-
+if __name__ == '__main__':
+    generate_cron_file()
+    

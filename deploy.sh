@@ -9,6 +9,7 @@ sudo apt-get install -y python-pip
 
 mkdir lib
 pip install -t lib -r requirements.txt
+chmod +x pre_deploy.py
 # delete targetEnvironment values and generate cron.yaml file
-python pre_deploy.py
+./pre_deploy.py
 gcloud app --quiet deploy --version=1 cron.yaml app.yaml
