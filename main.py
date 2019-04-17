@@ -44,6 +44,8 @@ class NatsHandler(webapp2.RequestHandler):
             source = yaml_to_json(os.getcwd() + "/cron.yaml")
             servers = []
             for task in source["cron"]:
+                print "task is"
+                print task
                 if event_type and environment in task["description"]:
                     print "server is"
                     print natServers[environment]
