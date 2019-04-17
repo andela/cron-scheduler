@@ -1,9 +1,9 @@
 cron:
   - description: Push a "tick" onto NATS every 24 hours
-    url: /publish/USER_LOGGED_IN
+    url: /publish/CohortCreatedEvent
     targetEnvironment: staging
     schedule: every 24 hours
   - description: Push a "tick" onto NATS every 24 hours
-    url: /publish/USER_LOGGED_IN
+    url: /publish/CohortCreatedEvent
     targetEnvironment: production
     schedule: every 24 hours
