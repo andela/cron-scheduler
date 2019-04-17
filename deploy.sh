@@ -4,8 +4,6 @@ sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file $
 
 # configure gcloud
 sudo /opt/google-cloud-sdk/bin/gcloud --quiet config set project $CRON_PROJECT_NAME
-sudo /opt/google-cloud-sdk/bin/gcloud --quiet config set compute/zone ${CRON_PROJECT_CLOUDSDK_COMPUTE_ZONE}
-sudo /opt/google-cloud-sdk/bin/gcloud --quiet container clusters get-credentials $CRON_PROJECT_NAME
 
 sudo apt-get install -y python-pip
 

@@ -21,7 +21,6 @@ jobs:
           CONTAINER_NAME_PROD: authorization
           DEPLOYMENT_PROD: authorization
           CRON_PROJECT_NAME: tech-myandela-production1981
-          CRON_PROJECT_CLOUDSDK_COMPUTE_ZONE: us-east1-b
           DEPLOYMENT_KIT_REPO: 'git@github.com:andela/DevOps-Misc-Scripts.git'
           DEPLOYMENT_KIT_NAME: deployment-kit
       - image: 'postgres:9.6-alpine'
