@@ -7,3 +7,11 @@ cron:
     url: /publish/CohortCreatedEvent
     targetEnvironment: production
     schedule: every 24 hours
+  - description: Push a "tick" onto NATS every 1 hour
+    url: /publish/SendDevelopersReportEvent
+    targetEnvironment: staging
+    schedule: every 1 hour
+  - description: Push a "tick" onto NATS every 1 hour
+    url: /publish/SendDevelopersReportEvent
+    targetEnvironment: production
+    schedule: every 1 hour
