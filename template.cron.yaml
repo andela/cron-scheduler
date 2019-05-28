@@ -15,3 +15,7 @@ cron:
     url: /publish/SendDevelopersReportEvent
     targetEnvironment: production
     schedule: every 1 hours
+  - description: Push a "tick" onto NATS every monday
+    url: /publish/SendOnboardingNotification
+    targetEnvironment: staging
+    schedule: every monday at 12:00
