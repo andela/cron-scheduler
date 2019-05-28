@@ -18,4 +18,4 @@ cron:
   - description: Push a "tick" onto NATS every monday
     url: /publish/SendOnboardingNotification
     targetEnvironment: staging
-    schedule: every monday at 12:00
+    schedule: every monday 12:00
